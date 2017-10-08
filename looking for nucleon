@@ -16,11 +16,26 @@ p_0 = [i/10 for i in range (0,2010)]
 n = 2
 E_0 = list(map(energy_finder, p_0))
 plt.plot(p_0, E_0, label = 'n = 2')
+n = 3
+E_0 = list(map(energy_finder, p_0))
+plt.plot(p_0, E_0, label = 'n = 3')
+n = 4
+E_0 = list(map(energy_finder, p_0))
+plt.plot(p_0, E_0, label = 'n = 4')
+n = 5
+E_0 = list(map(energy_finder, p_0))
+plt.plot(p_0, E_0, label = 'n = 5')
+n = 6
+E_0 = list(map(energy_finder, p_0))
+plt.plot(p_0, E_0, label = 'n = 6')
+n = 7
+E_0 = list(map(energy_finder, p_0))
+plt.plot(p_0, E_0, label = 'n = 7')
 plt.xscale('log')
 plt.axis((0.1, 200, 0.9, 3.45))
 plt.xlabel('$p_0$, GeV')
 plt.ylabel('$E_{1,n}^*$, GeV')
-plt.plot([0, 1000], [1.18, 1.18],'g--', label = '1.18 GeV')
+#plt.plot([0, 1000], [1.18, 1.18],'g--', label = '1.18 GeV')
 plt.legend()
 plt.show()
 
