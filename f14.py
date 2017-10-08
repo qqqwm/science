@@ -1,3 +1,6 @@
+"""
+Makes plots of maximal energy of pion depending on momentum of proton.
+"""
 import matplotlib.pyplot as plt
 import math
 import scipy
