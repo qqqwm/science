@@ -1,7 +1,6 @@
-#import matplotlib.pyplot as plt
-#import math
-#import scipy
-#import numpy
+"""
+Finds multiplicities of different particles
+"""
 data = open('test31100.f14', 'r')
 number_of_events = 10000
 number_of_inelastic_events = 0
