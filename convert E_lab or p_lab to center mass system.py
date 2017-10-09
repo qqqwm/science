@@ -1,5 +1,5 @@
 """
-Converts energy in laboratory system to momentum in center of mass system.
+Converts energies in laboratory system to momenta in center of mass system.
 """
 m = 0.938 #mass of proton
 p_lab = (20, 31, 40, 80, 158)
