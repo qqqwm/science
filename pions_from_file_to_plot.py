@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import math
 from matplotlib.ticker import AutoMinorLocator
-delta_e = 0.01
+delta_e = 0.05
 number_of_events = 500000000
 nucleons = []
 nucleon_energies = open("proton_energies_final_3.txt", 'r')
@@ -27,19 +27,8 @@ def plot(array, label = 'None', m = 0.940):
     plt.step(x, y, label = label)
     plt.xlabel('$E$, GeV', size = 16)
     plt.ylabel('$(pN_{ev})^{-1}dN/dE$, c/GeV$^2$', size = 16)
-#for i in nucleon_energies:
-#    nucleons.append(float(i))
 plt.figure(1)
-plot(nucleons, 'pi')
-'''
-plot(pions_plus)
-plot(pions_minus)
-plot(pions_0)
-plt.yscale('log')
-plt.figure(2)
-plot(resonances, 'resonances')
-plot(strings, 'strings')
-'''
+plot(nucleons)
 plt.axes().get_yaxis().set_minor_locator(AutoMinorLocator())
 plt.axes().get_xaxis().set_minor_locator(AutoMinorLocator())
 plt.tick_params(which = 'major', direction='in', bottom ='on', top ='on', right ='on', left ='on', length=6)
