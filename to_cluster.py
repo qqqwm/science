@@ -27,3 +27,4 @@ for line in data:
 pi_energies.close()
 numbers.write(str(number))
 numbers.close()
+data.close()
