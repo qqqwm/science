@@ -10,8 +10,8 @@ strings = []
 resonances = []
 '''
 number = 1
-numbers = open("numbers.txt", 'a')
-pi_energies = open("proton_energies_1.txt", 'a')
+numbers = open("numbers.txt", 'w')
+pi_energies = open("proton_energies_1.txt", 'w')
 for line in data:
     line = line.split(' ') 
     temp_l = []
@@ -47,3 +47,4 @@ for line in data:
 pi_energies.close()
 numbers.write(str(number))
 numbers.close()
+data.close()
