@@ -1,6 +1,8 @@
 import math
 data = open('pions.f14', 'r')
 k = 0
+
+heading_id = 'UQMD'
 '''
 pions = []
 pions_plus = []
@@ -21,7 +23,7 @@ for line in data:
             temp_l.append(j[0:len(j)-1])
     line = temp_l
     if k == 20:
-        if line[0] == 'UQMD':
+        if line[0] == heading_id:
             k = 0
             continue
         if line[9] == '101' and (float(line[5])**2 + float(line[6])**2)**(1/2)/float(line[7])\

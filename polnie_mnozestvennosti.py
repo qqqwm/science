@@ -3,6 +3,8 @@ Finds multiplicities of different particles
 """
 data = open('test31100.f14', 'r')
 number_of_events = 10000
+
+heading_id = 'UQMD'
 number_of_inelastic_events = 0
 protons = 0
 antiprotons = 0
@@ -24,7 +26,7 @@ for line in data:
             temp_l.append(j)
     line = temp_l
     if string_counter == 20:
-        if line[0] == 'UQMD':
+        if line[0] == heading_id:
             string_counter = 1
             list_counter += 1
             identifiers.append([])
