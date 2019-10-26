@@ -7,6 +7,7 @@ import scipy
 import numpy
 data = open('test.f14', 'r')
 k = 0
+m=0.938
 energies = []
 number_of_events = 10000
 for line in data:
@@ -38,9 +39,9 @@ for energy in energies:
 x = []
 y = []
 for i in range(len(number_of_particles)):
-    if energy_interval[i] > 0.938:
+    if energy_interval[i] > m:
         x.append(energy_interval[i])
-        y.append(math.log(number_of_particles[i]/4/math.pi/(math.sqrt(energy_interval[i]**2 - 0.938**2))/delta_e)/number_of_events)
+        y.append(math.log(number_of_particles[i]/4/math.pi/(math.sqrt(energy_interval[i]**2 - m**2))/delta_e)/number_of_events)
 f = open('data1.txt', 'w')
 for i in x[int(len(x)/5):int(len(x)/1.25)]:
     f.write(str(i))
