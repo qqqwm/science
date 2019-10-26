@@ -1,4 +1,5 @@
 import math
+heading_id = 'UQMD'
 data = open('testprotons.f14', 'r')
 k = 0
 '''
@@ -23,7 +24,7 @@ for line in data:
             temp_l.append(j[0:len(j)-1])
     line = temp_l
     if k == 20:
-        if line[0] == 'UQMD':
+        if line[0] == heading_id:
             k = 0
             number += 1
             continue

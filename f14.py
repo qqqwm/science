@@ -6,6 +6,8 @@ import math
 import scipy
 import numpy
 data = open('test.f14', 'r')
+
+heading_id = 'UQMD'
 k = 0
 energies = []
 number_of_events = 10000
@@ -18,7 +20,7 @@ for line in data:
             temp_l.append(j)
     line = temp_l
     if k == 20:
-        if line[0] == 'UQMD':
+        if line[0] == heading_id:
             k = 0
             continue
         if line[9] == '1':
