@@ -144,24 +144,7 @@ int main() {
   t->SetBranchAddress("pRec", pRec);
   t->SetBranchAddress("zdv", &zdv);
   t->SetBranchAddress("zpv", &zpv);
-  /*
-  t->SetBranchAddress("recVertex", recVertex);
-  t->SetBranchAddress("cosPhi", &cosPhi);
-  t->SetBranchAddress("targX", &targX);
-  t->SetBranchAddress("targY", &targY);
-  t->SetBranchAddress("nClustersP", nClustersP);
-  t->SetBranchAddress("nClustersN", nClustersN);
-  t->SetBranchAddress("simVertex", simVertex);
-  t->SetBranchAddress("pSim", pSim);
-  t->SetBranchAddress("nHitsP", nHitsP);
-  t->SetBranchAddress("nHitsN", nHitsN);
-  t->SetBranchAddress("nAllPotentialClustersP", &nAllPotentialClustersP);
-  t->SetBranchAddress("nAllPotentialClustersN", &nAllPotentialClustersN);
-  t->SetBranchAddress("nAllPotentialHitsP", &nAllPotentialHitsP);
-  t->SetBranchAddress("nAllPotentialHitsN", &nAllPotentialHitsN);
-  t->SetBranchAddress("nCommonPointsP", &nCommonPointsP);
-  t->SetBranchAddress("nCommonPointsN", &nCommonPointsN);
-  */
+
   TH2D* hist_pxy_sim = new TH2D("pxy_sim_l", "sim matched p_{x}-p_{y} distribution;p_{x}, [GeV/c];p_{y}, [GeV/c]", 200, -6, 6, 200, -6, 6);
   TH1D* hist_pz_sim = new TH1D("pz_sim_l", "sim matched p_{z} distribution;p_{z}, [GeV/c]", 200, -6., 260);
 
@@ -179,86 +162,7 @@ int main() {
   TH1D* hist_cos_x_simrec = new TH1D("COS_X_simrec", "sim momenta;cos #theta_{x};f(cos #theta_{x})", Nbins, -1., 1.);
   TH1D* hist_cos_y_simrec = new TH1D("COS_Y_simrec", "sim momenta;cos #theta_{y};f(cos #theta_{y})", Nbins, -1., 1.);
   TH1D* hist_cos_z_simrec = new TH1D("COS_Z_simrec", "sim momenta;cos #theta_{z};f(cos #theta_{z})", Nbins, -1., 1.);
-  /*
-  TH1D* hist_relerrlambda = new TH1D("RelativeErrorLambda", "Relative Lambda Momentum Reconstruction Error;RelativeError, % ;Entries", Nbins, -100., 100.);
-  TH1D* hist_relerrproton = new TH1D("RelativeErrorProton", "Relative Proton Momentum Reconstruction Error;RelativeError, % ;Entries", Nbins, -100., 100.);
-  TH1D* hist_relerrpion = new TH1D("RelativeErrorPion", "Relative Pion Momentum Reconstruction Error;RelativeError, % ;Entries", Nbins, -100., 100.);
-
-      TH1D* hist_relerrlambda_cut = new TH1D("RelativeErrorLambda_cut", "Relative Lambda Momentum Reconstruction Error(for cos_z < -0.99);RelativeError, % ;Entries", Nbins, -100., 100.);
-      TH1D* hist_relerrproton_cut = new TH1D("RelativeErrorProton_cut", "Relative Proton Momentum Reconstruction Error(for cos_z < -0.99);RelativeError, % ;Entries", Nbins, -100., 100.);
-      TH1D* hist_relerrpion_cut = new TH1D("RelativeErrorPion_cut", "Relative Pion Momentum Reconstruction Error(for cos_z < -0.99);RelativeError, % ;Entries", Nbins, -100., 100.);
-
-      TH1D* hist_cos_x_sim = new TH1D("COS_X_sim", ";cos #theta_{x};f(cos #theta_{x})", Nbins, -1., 1.);
-      TH1D* hist_cos_y_sim = new TH1D("COS_Y_sim", ";cos #theta_{y};f(cos #theta_{y})", Nbins, -1., 1.);
-      TH1D* hist_cos_z_sim = new TH1D("COS_Z_sim", ";cos #theta_{z};f(cos #theta_{z})", Nbins, -1., 1.);
-
-      TH2D* hist_cos_x_2d = new TH2D("COS_X_2d", "Sim and rec values - comparison;rec cos #theta_{x};sim cos #theta_{x}", Nbins, -1., 1., Nbins, -1., 1.);
-      TH2D* hist_cos_y_2d = new TH2D("COS_Y_2d", "Sim and rec values - comparison;rec cos #theta_{y};sim cos #theta_{y}", Nbins, -1., 1., Nbins, -1., 1.);
-      TH2D* hist_cos_z_2d = new TH2D("COS_Z_2d", "Sim and rec values - comparison;rec cos #theta_{z};sim cos #theta_{z}", Nbins, -1., 1., Nbins, -1., 1.);
-
-      TH1D* hist_xf_sim = new TH1D("xf_sim", "x_{F} distribution;", 400, -1, 1.);
-
-      Double_t *new_bins = new Double_t[Nbins + 1];
-      for (int i = 0; i <= Nbins; i++) {
-        new_bins[i] = TMath::Power(10, (i - 200) / 50.);
-      }
-      TH1D* hist_logxf_sim = new TH1D("logxf_sim", "x_{F} distribution;", Nbins, new_bins);
-      //BinLogX(hist_logxf_sim);
-
-      TH1D* hist_logpxf_rec = new TH1D("pxf_rec", "x_{F} distribution;", 200, -4., 0.);
-      TH1D* hist_lognxf_rec = new TH1D("nxf_rec", "-x_{F} distribution;", 200, 0., 4.);
-
-      TH1D* hist_nRatioAllToPotentialPointsP = new TH1D("nRatioAllToPotentialPointsP", "All clusters / Potential points(+) distribution (before cuts);ratio", 200, 0., 2.);
-      TH1D* hist_nRatioAllToPotentialPointsN = new TH1D("nRatioAllToPotentialPointsN", "All clusters / Potential points(-) distribution (before cuts);ratio", 200, 0., 2.);
-
-      TH1D* hist_nRatioCommonToAllClustersP = new TH1D("nRatioCommonToAllClustersP", "Common points / All clusters (+) distribution (before cuts);ratio", 200, 0., 2.);
-      TH1D* hist_nRatioCommonToAllClustersN = new TH1D("nRatioCommonToAllClustersN", "Common points / All clusters (-) distribution (before cuts);ratio", 200, 0., 2.);
-
-      TH1D* hist_nRatioClustersToHitsP = new TH1D("nRatioClustersToHitsP", "Clusters / Hits (+) distribution (before cuts);ratio", 200, 0., 2.);
-      TH1D* hist_nRatioClustersToHitsN = new TH1D("nRatioClustersToHitsN", "Clusters / Hits (-) distribution (before cuts);ratio", 200, 0., 2.);
-
-      TH1D* hist_nCommonPointsP = new TH1D("nCommonPointsP", "CommonPoints (+) distribution (before cuts);# of clusters", 236, -0.5, 235.5);
-      TH1D* hist_nCommonPointsN = new TH1D("nCommonPointsN", "CommonPoints (-) distribution (before cuts);# of clusters", 236, -0.5, 240.5);
-
-      TH1D* hist_nClustersP = new TH1D("nClustersP", "Clusters (+) (All TPC) distribution (before cuts);# of clusters", 236, -0.5, 235.5);
-      TH1D* hist_nClustersN = new TH1D("nClustersN", "Clusters (-) (All TPC) distribution (before cuts);# of clusters", 236, -0.5, 235.5);
-
-      TH2D* hist_logpxf_recpt = new TH2D("xfpt", "x_{F}-p_{T} distribution;x_{F};p_{T}, [GeV/c]", 200, 1e-4, 1., 150, 0.0, max_pt);
-      TH2D* hist_ypt = new TH2D("ypt", "y-p_{T} distribution;y;p_{T}, [GeV/c]", 200, -max_y, max_y, 150, 0.0, max_pt);
-      TH1D* hist_z = new TH1D("Deltaz", "#Deltaz distribution;#Deltaz,[cm]", 200, 0.0, max_deltaz);
-      TH2D* hist_pxy = new TH2D("pxy", "p_{x}-p_{y} distribution;p_{x}, [GeV/c];p_{y}, [GeV/c]", 100, -max_pt, max_pt, 100, -max_pt, max_pt);
-
-      TH1D* hist_pvz_sim = new TH1D("PrimVertex", "Sim PrimVertex distribution;z,[cm]", 200, -600., -540.);
-      TH2D* hist_pvxy_sim = new TH2D("pvxy_sim", "Sim PrimVertex distribution;x [cm];y [cm]", 100, -5., 5, 100, -5., 5.);
-      TH1D* hist_pvz_rec = new TH1D("pvz_rec", "Rec PrimVertex-MainVertex distribution;z [cm]", 200, -10., 10.);
-      TH2D* hist_pvxy_rec = new TH2D("pvxy_rec", "Rec PrimVertex-MainVertex distribution;x [cm];y [cm]", 101, -0.5, 0.5, 101, -0.5, 0.5);
-
-      TH1D* hist_svz_sim = new TH1D("svz_sim", "Sim DecayVertex distribution;z [cm]", 200, -600., -600. + max_deltaz);
-      TH2D* hist_svxy_sim = new TH2D("svxy_sim", "Sim DecayVertex distribution;x [cm];y [cm]", 100, -5., 5, 100, -5., 5.);
-      TH1D* hist_svz_rec = new TH1D("svz_rec", "Rec DecayVertex distribution;z,[cm]", 200, -1., 1);
-      TH2D* hist_svxy_rec = new TH2D("svxy_rec", "Rec DecayVertex distribution;x [cm];y [cm]", 101, -0.5, 0.5, 101, -0.5, 0.5);
-
-      TH2D* hist_ypt_cut = new TH2D("ypt_0.99cut", "y-p_{T} distribution(cos #theta_{z}<-0.99);y;p_{T}, [GeV/c]", 200, -max_y, max_y, 150, 0.0, max_pt);
-      TH1D* hist_z_cut = new TH1D("z_0.99cut", "#Deltaz distribution(cos #theta_{z}<-0.99);#Deltaz,[cm]", 200, 0.0, max_deltaz);
-      TH2D* hist_pxy_cut = new TH2D("ypxy_0.99cut", "p_{x}-p_{y} distribution(cos #theta_{z}<-0.99);p_{x}, [GeV/c];p_{y}, [GeV/c]", 100, -max_pt, max_pt, 100, -max_pt, max_pt);
-      TH1D* hist_sv_cut = new TH1D("StopVertex_0.99cut", "#Lambda decay point distribution(cos #theta_{z}<-0.99);z,[cm]", 200, -600., -600. + max_deltaz);
-
-      TH1D* hist_nRatioAllToPotentialPointsP_cut = new TH1D("nRatioAllToPotentialPointsP_cut", "All clusters / Potential points(+) distribution (after cuts);ratio", 200, 0., 2.);
-      TH1D* hist_nRatioAllToPotentialPointsN_cut = new TH1D("nRatioAllToPotentialPointsN_cut", "All clusters / Potential points(-) distribution (after cuts);ratio", 200, 0., 2.);
-
-      TH1D* hist_nRatioCommonToAllClustersP_cut = new TH1D("nRatioCommonToAllClustersP_cut", "Common points / All clusters (+) distribution (after cuts);ratio", 200, 0., 2.);
-      TH1D* hist_nRatioCommonToAllClustersN_cut = new TH1D("nRatioCommonToAllClustersN_cut", "Common points / All clusters (-) distribution (after cuts);ratio", 200, 0., 2.);
-
-      TH1D* hist_nRatioClustersToHitsP_cut = new TH1D("nRatioClustersToHitsP_cut", "Clusters / Hits (+) distribution (after cuts);ratio", 200, 0., 2.);
-      TH1D* hist_nRatioClustersToHitsN_cut = new TH1D("nRatioClustersToHitsN_cut", "Clusters / Hits (-) distribution (after cuts);ratio", 200, 0., 2.);
-
-      TH1D* hist_nCommonPointsP_cut = new TH1D("nCommonPointsP_cut", "nCommonPointsP(+) distribution (after cuts);# of clusters", 236, -0.5, 235.5);
-      TH1D* hist_nCommonPointsN_cut = new TH1D("nCommonPointsN_cut", "nCommonPointsN(-) distribution (after cuts);# of clusters", 236, -0.5, 235.5);
-
-      TH1D* hist_nClustersP_cut = new TH1D("nClustersP_cut", "nClusters(+) (All TPC) distribution (after cuts);# of clusters", 236, -0.5, 235.5);
-      TH1D* hist_nClustersN_cut = new TH1D("nClustersN_cut", "nClusters(-) (All TPC) distribution (after cuts);# of clusters", 236, -0.5, 235.5);
-      */
-  TH2D* hist_arm = new TH2D("arm", "Armenteros-Podolanski Plot;#alpha;p_{T}, [GeV/c]", 200, -1., 1., 150, 0.0, 0.35);
+    TH2D* hist_arm = new TH2D("arm", "Armenteros-Podolanski Plot;#alpha;p_{T}, [GeV/c]", 200, -1., 1., 150, 0.0, 0.35);
   TH2D* hist_arm_cut = new TH2D("arm_cut", "Armenteros-Podolanski Plot(after cuts, w/o matching);#alpha;p_{T}, [GeV/c]", 200, -1., 1., 150, 0.0, 0.25);
 
   TH2D* hist_armcos = new TH2D("armcos", ";#alpha;cos #theta_{z}", 200, -1., 1., 200, -1., 1.);
