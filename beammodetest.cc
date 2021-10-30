@@ -41,7 +41,7 @@
 #include <vector>
 
 using namespace std;
-using namespace io;
+//using namespace io;
 using namespace utl;
 using namespace evt;
 //using namespace det::TriggerConst;
@@ -70,7 +70,7 @@ int main (int argc, char* argv[])
   TH1D* hist_bsvpz  = new TH1D("hist_bsvpz", "BeamStopVertexPosition;z [cm];Entries", 320, -600., 1000.);
   TH1D* hist_bsvpzd  = new TH1D("hist_bsvpzd", "BeamStopVertexPosition;z [cm];Entries", 320, -600., -580.);
   TH2D* hist_bsvpxy = new TH2D("hist_bsvpxy", "BeamStopVertexPosition; x[cm]; y[cm]", 200, -7., 7., 200, -7., 7. );
-  printf("target.GetLength() = %f\ntarget.GetMaterialZ() = %f\ntarget.GetMaterialA() = %f\ntarget.GetMaterialDensity() = %f\ntarget.GetMaterialInteractionLength() = %f\ntarget.GetMaterialMolarMass() = %f\ntarget.GetStatus() = %i\n", target.GetLength(), target.GetMaterialZ(), target.GetMaterialA(), target.GetMaterialDensity(), target.GetMaterialInteractionLength(), target.GetMaterialMolarMass(), static_cast<int> target.GetStatus());
+  //printf("target.GetLength() = %f\ntarget.GetMaterialZ() = %f\ntarget.GetMaterialA() = %f\ntarget.GetMaterialDensity() = %f\ntarget.GetMaterialInteractionLength() = %f\ntarget.GetMaterialMolarMass() = %f\ntarget.GetStatus() = %i\n", target.GetLength(), target.GetMaterialZ(), target.GetMaterialA(), target.GetMaterialDensity(), target.GetMaterialInteractionLength(), target.GetMaterialMolarMass(), static_cast<int> target.GetStatus());
   while (eventFileChain.Read(event) == eSuccess) {
     ++nEvent;
 
@@ -123,7 +123,7 @@ int main (int argc, char* argv[])
           hist_bsvpxy->Fill(BeamStopVertexPosition.GetX(), BeamStopVertexPosition.GetY());
           //cout << "BeamStopVertex: " << BeamStopVertexPosition.GetX() << ", " << BeamStopVertexPosition.GetY() << ", " << BeamStopVertexPosition.GetZ() << endl;
           if (target.IsIn(BeamStopVertexPosition))
-            eventCuts->Fill("BeamStopVertexInTarget", 1.);
+            //eventCuts->Fill("BeamStopVertexInTarget", 1.);
           if (BeamStopVertex.GetType() == sim::VertexConst::eHadronicInelastic)
             eventCuts->Fill("BeamStopVertexHadrInelas", 1.);
           //cout << "is BeamStopVertex in target: " << target.IsIn(BeamStopVertexPosition) << endl;
@@ -147,7 +147,7 @@ int main (int argc, char* argv[])
   //cout << "nPassedCuts: " << nPassedCuts << endl;
   TFile outFile(Form("t.%s.root", argv[1]), "RECREATE");
   outFile.cd();
-  eventCuts->Write();
+  //eventCuts->Write();
   hist_bsvpz->Write();
   hist_bsvpzd->Write();
   hist_bsvpxy->Write();
