@@ -156,17 +156,18 @@ void mccorr() {
         ++MCacc[bin1][bin2][bin3][bin4];
         hist_p_pi_mass->FIll(p_pi_mass);
     }
-    /*
+    
     for (int i = 0; i < 10; ++i) {
         for (int j = 0; j < 10; ++j) {
             for (int k = 0; k < 10; ++k) {
                 for (int l = 0; l < 10; ++l) {
-                    if MCgen[i][j][k][l] >
+                    if (MCgen[i][j][k][l] > 3)
+                        coeff = MCgen[i][j][k][l] / MCacc[i][j][k][l];
                 }
             }
         }
     }
-    */
+    
     gStyle->SetOptStat(0);
     TF1 *func2 = new TF1("lorentzianPeak", lorentzianPeak, min_mass, max_mass, 3);
     func2->SetParNames ("Norm.Const", "m_{0}", "#Gamma");
